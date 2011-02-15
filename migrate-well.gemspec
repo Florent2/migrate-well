@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.email       = ["florent2@gmail.com"]
   s.homepage    = %q{http://github.com/Florent2/migrate-well}
   s.summary     = %q{Adds a rake task that runs "rake db:migrate", "rake db:migrate:redo", "rake db:test:prepare" and "annotate".}
-  s.description = %q{Adds a rake task "db:migrate:well" that runs "rake db:migrate", "rake db:migrate:redo", "rake db:test:prepare" and "annotate". Options: "wr=true": without db:redo; "wt=true": without db:test:prepare; "wa=true": without annotate.}
+  s.description = %q{Adds a rake task "db:migrate:well" that runs "rake db:migrate", "rake db:migrate:redo", "rake db:test:prepare" and "annotate". Options: "redo:false": without db:redo; "test:false": without db:test:prepare; "anno:false": without annotate.}
   s.licenses = ["MIT"]
 
   s.files         = `git ls-files`.split("\n")

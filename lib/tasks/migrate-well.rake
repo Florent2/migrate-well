@@ -1,18 +1,16 @@
 namespace :db do
   namespace :migrate do
-    desc 'Run migration (db:migrate), redo it (db:redo), prepare test db (db:test:prepare) and annotate models (annotate). Options: "wr=true": without db:redo; "wt=true": without db:test:prepare; "wa=true": without annotate.'
+    desc 'Run migration (db:migrate), redo it (db:redo), prepare test db (db:test:prepare) and annotate models (annotate). Options: "redo=false": without db:redo; "test=false": without db:test:prepare; "anno=false": without annotate.'
     task :well do
+      abort "Aborted because you use removed options. Please use the new options, to see them run rake -D well" if ENV["without_redo"] || ENV["wr"] || ENV["without_test_prepare"] || ENV["wt"] || ENV["without_annotate"] || ENV["wa"]
+
       system_with_echo "rake db:migrate"
-
-      unless ENV["without_redo"] == "true" || ENV["wr"] == "true"
-        system_with_echo "rake db:migrate:redo" 
-      end
-
-      unless ENV["without_test_prepare"] == "true" || ENV["wt"] == "true"
-        system_with_echo "rake db:test:prepare" 
-      end
       
-      unless ENV["without_annotate"] == "true" || ENV["wa"] == "true"
+      system_with_echo "rake db:migrate:redo" unless ENV["redo"] == "false"
+
+      system_with_echo "rake db:test:prepare"  unless ENV["test"] == "false"
+
+      unless ENV["anno"] == "false"
         begin
           require "annotate"
           system_with_echo "bundle exec annotate" 
