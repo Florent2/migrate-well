@@ -1,7 +1,7 @@
 migrate-well
 ============
 
-migrate-well is a very simple gem for Rails 3. It adds a rake task `db:migrate:well` that runs `rake db:migrate`, `rake db:migrate:redo`, `rake db:test:prepare` and `annotate`.
+migrate-well is a very simple gem for Rails 3. It adds a rake task `db:migrate:well` that runs `rake db:migrate`, `rake db:migrate:redo`, `rake db:test:prepare` and `annotate` (only if the annotate gem is installed).
 
 It has been tested with Rails 3.0.3.
 
